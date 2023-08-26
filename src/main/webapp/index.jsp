@@ -19,9 +19,9 @@
         <%  session = request.getSession(false);
             if(session.getAttribute("currentUser") != null){
         %>
-        <jsp:include page="/View/components/navbarLogout.jsp"></jsp:include>
+        <jsp:include page="/View/components/navbarLogout.jsp" />
         <% }else{%>
-        <jsp:include page="/View/components/navbar.jsp"></jsp:include>
+        <jsp:include page="/View/components/navbar.jsp" />
         <% } %>
         <header class="masthead">
             <div class="container position-relative">
@@ -63,6 +63,6 @@
                 </div>
             </div>
         </section>
-        <jsp:include page="/View/components/footer.jsp"></jsp:include>
+        <jsp:include page="/View/components/footer.jsp" />
     </body>
 </html>

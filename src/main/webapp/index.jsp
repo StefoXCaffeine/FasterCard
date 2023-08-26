@@ -35,6 +35,7 @@
                 </div>
             </div>
         </header>
+
         <!-- Icons Grid-->
         <section class="features-icons text-center">
             <div class="container">

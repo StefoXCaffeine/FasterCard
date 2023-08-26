@@ -314,6 +314,11 @@ th, td{
   border: 2px solid black;
 }
 
+.spacingCards{
+  margin-top : 10px;
+  margin-bottom : 10px;
+}
+
 @media print{
   nav{
     display : none !important;

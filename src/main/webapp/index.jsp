@@ -64,12 +64,5 @@
             </div>
         </section>
         <jsp:include page="/View/components/footer.jsp"></jsp:include>
-        <c:if test="${not empty loginError}">
-            <script>
-                window.addEventListener("load",function(){
-                    alert("${loginError}");
-                })
-            </script>
-        </c:if>
     </body>
 </html>

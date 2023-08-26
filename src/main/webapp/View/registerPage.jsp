@@ -64,14 +64,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="radio" name="tipoUtente" id="Negoziante" value="1">
-                                                <label class="form-check-label" for="Negoziante">Negoziante</label>
-                                            </div>
-                                            <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="radio" name="tipoUtente" id="Utente" value="2">
-                                                <label class="form-check-label" for="Utente">Utente</label>
-                                            </div>
+                                            <input type="hidden" id="tipoUtente" name="tipoUtente" value="2">
                                             <div class="d-flex justify-content-end pt-3">
                                                 <button type="submit" id="btn-submit" class="btn btn-primary btn-lg ms-2" onclick="hashPSW()">Registrati</button>
                                             </div>

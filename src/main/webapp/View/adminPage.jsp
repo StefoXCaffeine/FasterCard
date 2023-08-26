@@ -4,6 +4,7 @@
         <title>Pagina Admin</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="styles/styles.css" rel="stylesheet" />
+        <script src="https://cdn.jsdelivr.net/npm/md5-js-tools@1.0.2/lib/md5.min.js"></script>
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="./assets/img/favicon.ico" />
         <!-- Bootstrap icons-->
@@ -84,8 +85,41 @@
                         </div>
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="card h-100">
+                            <div class="card-header d-flex justify-content-center"><h1>Addebito/Accredito</h1></div>
+                            <div class="card-body d-flex justify-content-center align-items-center">
+                                <form action="${pageContext.request.contextPath}/RegisterServlet" method="POST">
+                                    <input type="text" id="nome" name="nome" class="form-control form-control-lg" required />
+                                    <label class="form-label" for="nome">Nome</label>
+                                    <input type="text" id="cognome" name="cognome" class="form-control form-control-lg" required />
+                                    <label class="form-label" for="cognome">Cognome</label>
+                                    <input type="email" id="emailReg" name="email" class="form-control form-control-lg" required />
+                                    <label class="form-label" for="emailReg">Email</label>
+                                    <input type="password" id="password" name="password" class="form-control form-control-lg" required />
+                                    <label class="form-label" for="password">Password</label>
+                                    <input type="password" id="password2" name="password2" class="form-control form-control-lg" />
+                                    <label class="form-label" for="password2">Ripeti Password</label>
+                                    <input type="hidden" id="tipoUtente" name="tipoUtente" value="1">
+                                    <div class="d-flex justify-content-end pt-3">
+                                        <button type="submit" id="btn-submitReg" class="btn btn-primary btn-lg ms-2" onclick="hashPSW()">Registrati</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         <jsp:include page="/View/components/footer.jsp"></jsp:include>
+        <script>
+            function hashPSW(){
+                if(document.getElementById("password").value !== ""){
+                    document.getElementById("password").value = MD5.generate(document.getElementById("password").value);
+                    document.getElementById("password2").value = MD5.generate(document.getElementById("password2").value);
+                }
+            }
+        </script>
     </body>
 </html>

@@ -21,7 +21,6 @@ public class RegisterServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         UtenteServices utenteServ = new UtenteServices();
-        JSONObject Jlocation = new JSONObject();
         PasswordEncrypt encrypt = new PasswordEncrypt();
 
         request.setCharacterEncoding("UTF-8");
@@ -39,12 +38,8 @@ public class RegisterServlet extends HttpServlet {
         }
 
         if(exists){ //Mail già esistente
-            Jlocation.put("success", false);
-            Jlocation.put("message", "Esiste già un utente associato a questa mail");
-            String location = Jlocation.toString();
-            response.setContentType("application/json");
-            response.setCharacterEncoding("UTF-8");
-            response.getWriter().write(location);
+            request.setAttribute("successRegister", false);
+            getServletContext().getRequestDispatcher("/View/registerPage.jsp").forward(request, response);
         }
         else{ //Registrazione corretta
             String encryptedPassword = encrypt.hashing(password);
@@ -62,15 +57,9 @@ public class RegisterServlet extends HttpServlet {
                     throw new RuntimeException(e);
                 }
 
-                Jlocation.put("success", true);
-                Jlocation.put("message", "utente registrato correttamente");
-                Jlocation.put("user", user);
-                String location = Jlocation.toString();
-                response.setContentType("application/json");
-                response.setCharacterEncoding("UTF-8");
-                response.getWriter().write(location);
+                request.setAttribute("successRegister", true);
+                getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
             }
         }
-
     }
 }

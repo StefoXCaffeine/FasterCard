@@ -14,9 +14,11 @@
         <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css" />
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     </head>
     <body>
-        <%  session = request.getSession(false);
+        <%
+            session = request.getSession(false);
             if(session.getAttribute("currentUser") != null){
         %>
         <jsp:include page="/View/components/navbarLogout.jsp" />
@@ -65,5 +67,12 @@
             </div>
         </section>
         <jsp:include page="/View/components/footer.jsp" />
+        <script>
+            setTimeout(function (){
+                if(${successRegister =='true'}){
+                    swal("L'utente è stato registrato!", "Effettua il login per continuare", "success");
+                }
+            }, 500);
+        </script>
     </body>
 </html>

@@ -11,6 +11,7 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/md5-js-tools@1.0.2/lib/md5.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     </head>
     <body>
         <jsp:include page="components/navbar.jsp"></jsp:include>
@@ -108,6 +109,11 @@
                 }
             }
 
+            setTimeout(function (){
+                if(${successRegister =='false'}){
+                swal("Errore!", "Questa email è già stata registrata", "error");
+                }
+            }, 500);
         </script>
     </body>
 </html>

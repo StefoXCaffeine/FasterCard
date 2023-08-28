@@ -43,16 +43,17 @@ public class LoginServlet extends HttpServlet {
             response.getWriter().write(location);
         }
         else{
+            int userType = user.getUserType();
+            if(userType==1){//Controlla se il mercante è bloccato
+                int merchBlock = user.getNegBlock();
+                if(merchBlock == 0){ //Mercante Bloccato, ritorna all'index con alert di errore
+                    request.setAttribute("merchantBlock", true);
+                    getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
+                }
+            }
             HttpSession session = request.getSession();
             session.setMaxInactiveInterval(60*5);
             session.setAttribute("currentUser", user);
-            Jlocation.put("success", true);
-            Jlocation.put("message", "Login effettuato con successo, benvenuto "+user.getNome());
-            Jlocation.put("SessionID", session.getId());
-            String location = Jlocation.toString();
-            response.setContentType("application/json");
-            response.setCharacterEncoding("UTF-8");
-            response.getWriter().write(location);
             switch (user.getUserType()){
                 case 0:
                     response.sendRedirect("View/adminPage.jsp");

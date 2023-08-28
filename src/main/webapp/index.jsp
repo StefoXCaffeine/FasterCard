@@ -72,6 +72,10 @@
                 if(${successRegister =='true'}){
                     swal("L'utente è stato registrato!", "Effettua il login per continuare", "success");
                 }
+
+                if(${merchantBlock =='true'}){
+                    swal("Errore!", "Il tuo profilo è stato bloccato, contatta un amministratore", "error");
+                }
             }, 500);
         </script>
     </body>

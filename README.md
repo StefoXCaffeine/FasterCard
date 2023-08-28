@@ -5,6 +5,6 @@ The goal of the project was to develop a Webapp regarding the management of Cred
 
 <b>Card Owner</b>: Can check their credit and eventually download a PDF report with all their transactions.
 
-Merchant: Same operations as a card owner but can also do transactions.
+<b>Merchant</b>: Same operations as a card owner but can also do transactions.
 
-System Admin: Same operations as a merchant but can also create cards, register merchants and eventually block them.
+<b>System Admin</b>: Same operations as a merchant but can also create cards, register merchants and eventually block them.

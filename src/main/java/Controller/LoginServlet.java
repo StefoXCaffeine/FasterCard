@@ -34,13 +34,9 @@ public class LoginServlet extends HttpServlet {
             e.printStackTrace();
         }
 
-        if(user.getNome() == null){
-            Jlocation.put("success", false);
-            Jlocation.put("message","email o password errati");
-            String location = Jlocation.toString();
-            response.setContentType("application/json");
-            response.setCharacterEncoding("UTF-8");
-            response.getWriter().write(location);
+        if(user.getNome() == null){//email o password errati
+            request.setAttribute("userLogged", false);
+            getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
         }
         else{
             int userType = user.getUserType();

@@ -25,6 +25,7 @@
         <% }else{%>
         <jsp:include page="/View/components/navbar.jsp" />
         <% } %>
+
         <header class="masthead">
             <div class="container position-relative">
                 <div class="row justify-content-center">

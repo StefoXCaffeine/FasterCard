@@ -47,6 +47,7 @@ public class LoginServlet extends HttpServlet {
                     getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
                 }
             }
+
             HttpSession session = request.getSession();
             session.setMaxInactiveInterval(60*5);
             session.setAttribute("currentUser", user);

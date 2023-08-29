@@ -6,7 +6,7 @@
 <nav class="navbar navbar-light bg-primary sticky-top">
     <div class="container">
         <a class="navbar-brand d-flex align-items-center" href="${pageContext.request.contextPath}/index.jsp">
-            <img src="../assets/img/fasterlogo.png" alt="FasterCard" width="100" height="70" class="img-responsive d-inline-block align-text-top">
+            <img src="${pageContext.request.contextPath}/View/assets/img/fasterlogo.png" alt="FasterCard" width="100" height="70" class="img-responsive d-inline-block align-text-top">
             <span class="text-white">FasterCard</span>
         </a>
         <div class="btn-group">

@@ -5,6 +5,8 @@ import java.security.MessageDigest;
 import java.nio.charset.StandardCharsets;
 import java.security.NoSuchAlgorithmException;
 
+//Classe utility che genera un hashing crittografico SHA-256 della stringa passata come input.
+//Viene utilizzata per effettuare l'hashing delle password(di cui è stato effettuato un primo hash MD5 lato frontend)prima di salvarle nel database
 public class PasswordEncrypt {
     String password;
 

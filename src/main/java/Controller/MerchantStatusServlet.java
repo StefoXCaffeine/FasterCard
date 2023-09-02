@@ -7,7 +7,6 @@ import Model.UtenteServices;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
-import org.json.JSONObject;
 
 @WebServlet(name = "MerchantStatusServlet", value = "/MerchantStatusServlet")
 public class MerchantStatusServlet extends HttpServlet {
@@ -18,13 +17,13 @@ public class MerchantStatusServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        JSONObject Jlocation = new JSONObject();
+        //Servlet che controlla lo stato del negoziante e lo aggiorna bloccandolo/sbloccandolo
         UtenteServices utenteServ = new UtenteServices();
         String email = request.getParameter("email");
         String operation = request.getParameter("operation");
         String message="";
-        boolean status = false;
-        boolean merchantExists = false;
+        boolean status = false; //Flag che indica se il negoziante è bloccato o no
+        boolean merchantExists = false; //Flag che indica se il negoziante esiste o no
         try {
             status = utenteServ.getMerchantStatus(email);
         } catch (SQLException e) {
@@ -35,13 +34,13 @@ public class MerchantStatusServlet extends HttpServlet {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        if(!merchantExists){
+        if(!merchantExists){//Il negoziante non esiste
             message = "Errore, il negoziante non esiste";
-        }else if(operation.equals("Blocca")){
-            if(!status){
+        }else if(operation.equals("Blocca")){//Il negoziante esiste, operazione "Blocca"
+            if(!status){//Negoziante già bloccato
                 message = "Errore, il negoziante è già bloccato";
             }
-            else{
+            else{//Negoziante bloccato correttamente
                 try {
                     utenteServ.updateMerchantStatus(email, false);
                 } catch (SQLException e) {
@@ -49,11 +48,11 @@ public class MerchantStatusServlet extends HttpServlet {
                 }
                 message = "Il negoziante è stato bloccato!";
             }
-        }else if(operation.equals("Sblocca")){
-            if(status){
+        }else if(operation.equals("Sblocca")){//Il negoziante esiste, operazione "Sblocca"
+            if(status){//Negoziante già sbloccato
                 message = "Errore, il negoziante è già sbloccato";
             }
-            else{
+            else{//Negoziante sbloccato correttamente
                 try {
                     utenteServ.updateMerchantStatus(email, true);
                 } catch (SQLException e) {

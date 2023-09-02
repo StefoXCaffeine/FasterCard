@@ -24,6 +24,8 @@ public class userTransactionsServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        //Servlet che restituisce la lista dei movimenti effettuati sulle carte dell'utente
+        //L'ID dell'utente viene preso dalla sessione corrente e utilizzato per ottenere tutti i movimenti
         HttpSession session = request.getSession(false);
         Utente user = (Utente) session.getAttribute("currentUser");
         int id = user.getId();
@@ -35,7 +37,7 @@ public class userTransactionsServlet extends HttpServlet {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        request.setAttribute("movements", movs);
+        request.setAttribute("movements", movs); //Salvataggio della lista movimenti nella richiesta
         getServletContext().getRequestDispatcher("/View/reportPage.jsp").forward(request, response);
     }
 }

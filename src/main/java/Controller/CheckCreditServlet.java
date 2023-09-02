@@ -7,33 +7,32 @@ import Model.CartaServices;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
-import org.json.JSONObject;
 
 @WebServlet(name = "CheckCreditServlet", value = "/CheckCreditServlet")
 public class CheckCreditServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        JSONObject Jlocation = new JSONObject();
+        //Servlet che controlla il credito di una carta. Se la carta è bloccata oppure non esiste, non è poss
         CartaServices cartaServ = new CartaServices();
         request.setCharacterEncoding("UTF-8");
         String numCarta = request.getParameter("cardNumber");
         String message;
-        boolean cardExists;
+        boolean cardExists; //flag che indica se la carta esiste o no
         try {
             cardExists=cartaServ.cardExists(numCarta);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        if(cardExists) {
+        if(cardExists) { //La carta esiste
             boolean cardStatus;
             try {
                 cardStatus=cartaServ.getCardStatus(numCarta);
             } catch (SQLException e) {
                 throw new RuntimeException(e);
             }
-            if (!cardStatus) {
+            if (!cardStatus) { //Carta bloccata, impossibile controllare credito
                 message = "La carta è bloccata, contattare un amministratore per sbloccarla.";
-            }else{
+            }else{ //Credito disponibile
                 String credit = null;
                 try {
                     credit = cartaServ.checkCredit(numCarta);
@@ -42,7 +41,7 @@ public class CheckCreditServlet extends HttpServlet {
                 }
                 message=credit+"$";
             }
-        }else{
+        }else{ //Carta inesistente, impossibile controllare credito
             message = "Errore! La carta non esiste.";
         }
         request.setAttribute("message", message);

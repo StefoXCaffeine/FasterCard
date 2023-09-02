@@ -11,6 +11,7 @@ import jakarta.servlet.annotation.*;
 public class RedirectServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        //Servlet che effettua il redirect verso la corretta pagina personale una volta che l'utente è loggato
         HttpSession session = request.getSession();
         Utente user = (Utente)session.getAttribute("currentUser");
         switch (user.getUserType()){

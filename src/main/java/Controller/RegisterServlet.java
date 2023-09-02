@@ -9,7 +9,6 @@ import Utils.PasswordEncrypt;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
-import org.json.JSONObject;
 
 @WebServlet(name = "RegisterServlet", value = "/RegisterServlet")
 public class RegisterServlet extends HttpServlet {
@@ -20,6 +19,7 @@ public class RegisterServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        //Servlet che gestisce la registrazione di un utente
         UtenteServices utenteServ = new UtenteServices();
         PasswordEncrypt encrypt = new PasswordEncrypt();
 
@@ -30,7 +30,7 @@ public class RegisterServlet extends HttpServlet {
         String password = request.getParameter("password");
         int userType = Integer.parseInt(request.getParameter("tipoUtente"));
 
-        boolean exists = false;
+        boolean exists = false; //Flag che indica se la mail è già registrata o no
         try {
             exists = utenteServ.alreadyRegistered(email);
         } catch (SQLException e) {

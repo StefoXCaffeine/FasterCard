@@ -11,14 +11,14 @@ import jakarta.servlet.annotation.*;
 public class LogoutServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        HttpSession session = request.getSession(false);
-        if(session != null) {
+        //Servlet che gestisce il logout
+        HttpSession session = request.getSession(false); //Viene richiesta la sessione solamente se esiste già
+        if(session != null) {//Se la sessione esiste vengono eliminati gli attributi e viene invalidata
             session.removeAttribute("currentUser");
             session.invalidate();
         }
+        //Redirect all'index
         response.sendRedirect("/index.jsp");
-        //RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
-        //dispatcher.forward(request, response);
     }
 
     @Override

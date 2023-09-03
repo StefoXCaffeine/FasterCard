@@ -2,6 +2,8 @@ package Model;
 
 import java.sql.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 public class CartaServices {
 
@@ -106,5 +108,28 @@ public class CartaServices {
         connection.close();
 
         return exists;
+    }
+
+    public List<Carta> getUserCards(int id) throws SQLException {
+        DBConn db = new DBConn();
+        List<Carta> list = new ArrayList<Carta>();
+        Carta carta = null;
+        String all="SELECT carte.* FROM (carte INNER JOIN utenti ON carte.IDTitolare = utenti.IDUtente) WHERE utenti.IDUtente = ?";
+        Connection connection = db.getConnection();
+        PreparedStatement query=connection.prepareStatement(all);
+        query.setInt(1, id);
+        ResultSet transactions = query.executeQuery();
+        while (transactions.next()) {
+            carta = new Carta();
+            carta.setNumCarta(transactions.getString("NumeroCarta"));
+            carta.setDataCreazione(transactions.getDate("DataCreazione"));
+            carta.setDataScadenza(transactions.getDate("DataScadenza"));
+            carta.setBlock(transactions.getBoolean("FlagBlock"));
+            carta.setCvv(transactions.getString("Cvv"));
+            carta.setCredito(transactions.getFloat("Credito"));
+            carta.setIdTitolare(transactions.getInt("IDTitolare"));
+            list.add(carta);
+        }
+        return list;
     }
 }

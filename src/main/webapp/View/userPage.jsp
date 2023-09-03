@@ -49,7 +49,7 @@
                     <div class="card h-100">
                         <div class="card-header d-flex justify-content-center"><h1>Le mie carte</h1></div>
                         <div class="card-body d-flex justify-content-center align-items-center">
-                            <table>
+                            <table class="myCards">
                                 <tr>
                                     <th>Carta</th>
                                     <th>Credito</th>

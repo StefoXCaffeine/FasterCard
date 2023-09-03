@@ -327,6 +327,15 @@ th, td{
   color: #1E90FF;
 }
 
+.myCards{
+  width: 100%;
+}
+
+.myCards th, .myCards td{
+  border: 1px black;
+  border-bottom: 1px solid #ddd;
+}
+
 @media print{
   nav{
     display : none !important;

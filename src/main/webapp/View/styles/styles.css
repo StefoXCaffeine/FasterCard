@@ -319,6 +319,14 @@ th, td{
   margin-bottom : 10px;
 }
 
+.logoutitem:hover{
+  color: #ff5d94;
+}
+
+.profileitem:hover{
+  color: #1E90FF;
+}
+
 @media print{
   nav{
     display : none !important;

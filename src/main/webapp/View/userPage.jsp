@@ -1,3 +1,8 @@
+<%@ page import="Model.Carta" %>
+<%@ page import="java.util.List" %>
+<%@ page import="Model.CartaServices" %>
+<%@ page import="java.sql.SQLException" %>
+<%@ page import="Model.Utente" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
     <head>
@@ -35,6 +40,37 @@
                         <div class="card-header d-flex justify-content-center"><h1>Report Operazioni</h1></div>
                         <div class="card-body d-flex justify-content-center align-items-center">
                             <a href="${pageContext.request.contextPath}/userTransactionsServlet" class="btn btn-primary">Genera Report</a><br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="card h-100">
+                        <div class="card-header d-flex justify-content-center"><h1>Le mie carte</h1></div>
+                        <div class="card-body d-flex justify-content-center align-items-center">
+                            <table>
+                                <tr>
+                                    <th>Carta</th>
+                                    <th>Credito</th>
+                                    <th>Stato</th>
+                                </tr>
+                                <% Utente u = (Utente)session.getAttribute("currentUser");
+                                    int id = u.getId();
+                                    List<Carta> carte = null;
+                                    try {
+                                        carte = CartaServices.getUserCards(id);
+                                    } catch (SQLException e) {
+                                        throw new RuntimeException(e);
+                                    }
+                                    for (Carta c : carte){ %>
+                                <tr>
+                                    <td><%=c.getNumCarta()%></td>
+                                    <td><%=c.getCredito()%></td>
+                                    <td><%=c.isBlock()? "Sbloccata" : "Bloccata"%></td>
+                                </tr>
+                                <% } %>
+                            </table>
                         </div>
                     </div>
                 </div>

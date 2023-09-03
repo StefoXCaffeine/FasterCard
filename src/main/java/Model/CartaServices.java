@@ -110,7 +110,7 @@ public class CartaServices {
         return exists;
     }
 
-    public List<Carta> getUserCards(int id) throws SQLException {
+    public static List<Carta> getUserCards(int id) throws SQLException {
         DBConn db = new DBConn();
         List<Carta> list = new ArrayList<Carta>();
         Carta carta = null;

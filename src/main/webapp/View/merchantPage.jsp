@@ -25,7 +25,7 @@
                             <div class="card-body d-flex justify-content-center">
                                 <form action="${pageContext.request.contextPath}/CheckCreditServlet" method="GET">
                                     <label for="checkCredit">Inserisci Numero Carta:</label><br>
-                                    <input type="text" id="checkCredit" name="cardNumber">
+                                    <input type="text" id="checkCredit" name="cardNumber" class="form-control form-control-lg" autocomplete="off"><br>
                                     <button type="submit" class="btn btn-primary" id="submitCheckCredit">Controlla</button>
                                 </form>
                             </div>
@@ -47,15 +47,15 @@
                             <div class="card-body d-flex justify-content-center align-items-center">
                                 <form action="${pageContext.request.contextPath}/UpdateBalanceServlet" method="POST">
                                     <label for="cardNumber">Inserisci Numero Carta:</label><br>
-                                    <input type="text" id="cardNumber" name="cardNumber"><br>
+                                    <input type="text" id="cardNumber" name="cardNumber" class="form-control form-control-lg" autocomplete="off"><br>
                                     <label for="operationList">Scegli l'operazione:</label><br>
-                                    <input list="operation" name="operation" id="operationList" autocomplete="off"><br>
+                                    <input list="operation" name="operation" id="operationList" class="form-control form-control-lg" autocomplete="off"><br>
                                     <datalist id="operation">
                                         <option value="Bonifico">
                                         <option value="Addebito">
                                     </datalist>
                                     <label for="valore">Inserire valore:</label><br>
-                                    <input type="text" name="valore" id="valore" autocomplete="off"><br>
+                                    <input type="text" inputmode="numeric" name="valore" id="valore" class="form-control form-control-lg" autocomplete="off"><br>
                                     <button type="submit" id="submitoperation" class="btn btn-primary">Effettua Operazione</button>
                                 </form>
                             </div>

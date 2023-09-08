@@ -26,7 +26,7 @@
                             <div class="card-body d-flex justify-content-center">
                                 <form action="${pageContext.request.contextPath}/CheckCreditServlet" method="GET">
                                     <label for="checkCredit">Inserisci Numero Carta:</label><br>
-                                    <input type="text" id="checkCredit" name="cardNumber" class="form-control form-control-lg">
+                                    <input type="text" id="checkCredit" name="cardNumber" class="form-control form-control-lg" autocomplete="off"><br>
                                     <button type="submit" class="btn btn-primary" id="submitCheckCredit">Controlla</button>
                                 </form>
                             </div>
@@ -38,9 +38,9 @@
                             <div class="card-body d-flex justify-content-center align-items-center">
                                 <form action="${pageContext.request.contextPath}/CardStatusServlet" method="POST">
                                     <label for="cardNumberStatus">Inserisci Numero Carta:</label><br>
-                                    <input type="text" id="cardNumberStatus" name="cardNumber" class="form-control form-control-lg"><br>
+                                    <input type="text" id="cardNumberStatus" name="cardNumber" class="form-control form-control-lg" autocomplete="off"><br>
                                     <label for="statusList">Scegli l'operazione:</label><br>
-                                    <input list="operation" name="operation" id="statusList" class="form-control form-control-lg"><br>
+                                    <input list="operation" name="operation" id="statusList" class="form-control form-control-lg" autocomplete="off"><br>
                                     <datalist id="statusOperations">
                                         <option value="Blocca">
                                         <option value="Sblocca">
@@ -58,7 +58,7 @@
                             <div class="card-body d-flex justify-content-center align-items-center">
                                 <form action="${pageContext.request.contextPath}/MerchantStatusServlet" method="POST">
                                     <label for="checkMerchant">Inserisci Email:</label><br>
-                                    <input type="text" id="checkMerchant" name="email" class="form-control form-control-lg"><br>
+                                    <input type="text" id="checkMerchant" name="email" class="form-control form-control-lg" autocomplete="off"><br>
                                     <label for="operationList">Scegli l'operazione:</label><br>
                                     <input list="operation" name="operation" id="operationList" autocomplete="off" class="form-control form-control-lg"><br>
                                     <datalist id="operation">
@@ -76,9 +76,9 @@
                             <div class="card-body d-flex justify-content-center align-items-center">
                                 <form action="${pageContext.request.contextPath}/CreateCardServlet" method="POST">
                                     <label for="email">Inserire email titolare:</label><br>
-                                    <input type="text" name="email" id="email" class="form-control form-control-lg"><br>
+                                    <input type="text" name="email" id="email" class="form-control form-control-lg" autocomplete="off"><br>
                                     <label for="valore">Inserire accredito iniziale:</label><br>
-                                    <input type="text" name="valore" id="valore" class="form-control form-control-lg"><br>
+                                    <input type="text" name="valore" id="valore" class="form-control form-control-lg" autocomplete="off"><br>
                                     <button type="submit" class="btn btn-primary">Crea carta</button>
                                 </form>
                             </div>
@@ -91,15 +91,15 @@
                             <div class="card-header d-flex justify-content-center"><h1>Registra Nuovo Negoziante</h1></div>
                             <div class="card-body d-flex justify-content-center align-items-center">
                                 <form action="${pageContext.request.contextPath}/RegisterServlet" method="POST">
-                                    <input type="text" id="nome" name="nome" class="form-control form-control-lg" required />
+                                    <input type="text" id="nome" name="nome" class="form-control form-control-lg" autocomplete="off" required />
                                     <label class="form-label" for="nome">Nome</label>
-                                    <input type="text" id="cognome" name="cognome" class="form-control form-control-lg" required />
+                                    <input type="text" id="cognome" name="cognome" class="form-control form-control-lg" autocomplete="off" required />
                                     <label class="form-label" for="cognome">Cognome</label>
-                                    <input type="email" id="emailReg" name="email" class="form-control form-control-lg" required />
+                                    <input type="email" id="emailReg" name="email" class="form-control form-control-lg" autocomplete="off" required />
                                     <label class="form-label" for="emailReg">Email</label>
-                                    <input type="password" id="password" name="password" class="form-control form-control-lg" required />
+                                    <input type="password" id="password" name="password" class="form-control form-control-lg" autocomplete="off" required />
                                     <label class="form-label" for="password">Password</label>
-                                    <input type="password" id="password2" name="password2" class="form-control form-control-lg" />
+                                    <input type="password" id="password2" name="password2" class="form-control form-control-lg" autocomplete="off" />
                                     <label class="form-label" for="password2">Ripeti Password</label>
                                     <input type="hidden" id="tipoUtente" name="tipoUtente" value="1">
                                     <div class="d-flex justify-content-end pt-3">

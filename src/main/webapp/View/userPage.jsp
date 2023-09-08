@@ -29,7 +29,7 @@
                         <div class="card-body d-flex justify-content-center">
                             <form action="${pageContext.request.contextPath}/CheckCreditServlet" method="GET">
                                 <label for="checkCredit">Inserisci Numero Carta:</label><br>
-                                <input type="text" id="checkCredit" name="cardNumber">
+                                <input type="text" id="checkCredit" name="cardNumber" class="form-control form-control-lg" autocomplete="off"><br>
                                 <button type="submit" class="btn btn-primary" id="btn-submit">Controlla</button>
                             </form>
                         </div>

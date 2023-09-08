@@ -24,9 +24,17 @@ public class UpdateBalanceServlet extends HttpServlet {
         CartaServices cartaServ = new CartaServices();
         MovimentoServices movServ = new MovimentoServices();
         request.setCharacterEncoding("UTF-8");
-        String numCarta = request.getParameter("cardNumber");
-        String operazione = request.getParameter("operation");
-        float value = Float.parseFloat(request.getParameter("valore"));
+        String numCarta = null;
+        String operazione = null;
+        float value = 0;
+        
+        try {
+            numCarta = request.getParameter("cardNumber");
+            operazione = request.getParameter("operation");
+            value = Float.parseFloat(request.getParameter("valore"));
+        }catch (Exception e){
+            getServletContext().getRequestDispatcher("/View/errorPage.jsp").forward(request, response);
+        }
         LocalDate actualDate = LocalDate.now();
         String message="";
         boolean exists = false; //True se la carta esiste, false altrimenti

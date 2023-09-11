@@ -90,20 +90,18 @@
                         <div class="card h-100">
                             <div class="card-header d-flex justify-content-center"><h1>Registra Nuovo Negoziante</h1></div>
                             <div class="card-body d-flex justify-content-center align-items-center">
-                                <form action="${pageContext.request.contextPath}/RegisterServlet" method="POST">
+                                <form action="${pageContext.request.contextPath}/RegisterServlet" onsubmit="return _validaForm()" method="POST">
                                     <input type="text" id="nome" name="nome" class="form-control form-control-lg" autocomplete="off" required />
                                     <label class="form-label" for="nome">Nome</label>
                                     <input type="text" id="cognome" name="cognome" class="form-control form-control-lg" autocomplete="off" required />
                                     <label class="form-label" for="cognome">Cognome</label>
                                     <input type="email" id="emailReg" name="email" class="form-control form-control-lg" autocomplete="off" required />
                                     <label class="form-label" for="emailReg">Email</label>
-                                    <input type="password" id="password" name="password" class="form-control form-control-lg" autocomplete="off" required />
-                                    <label class="form-label" for="password">Password</label>
-                                    <input type="password" id="password2" name="password2" class="form-control form-control-lg" autocomplete="off" />
-                                    <label class="form-label" for="password2">Ripeti Password</label>
+                                    <input type="password" id="passwordMain2" name="password" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$" title="Almeno 8 caratteri, una lettera minuscola, una maiuscola, un numero e un carattere speciale" class="form-control form-control-lg" autocomplete="off" required />
+                                    <label class="form-label" for="passwordMain2">Password</label>
                                     <input type="hidden" id="tipoUtente" name="tipoUtente" value="1">
                                     <div class="d-flex justify-content-end pt-3">
-                                        <button type="submit" id="btn-submitReg" class="btn btn-primary btn-lg ms-2" onclick="hashPSW()">Registrati</button>
+                                        <button type="submit" id="btn-submitReg" class="btn btn-primary btn-lg ms-2">Registrati</button>
                                     </div>
                                 </form>
                             </div>
@@ -114,11 +112,10 @@
         </div>
         <jsp:include page="/View/components/footer.jsp"></jsp:include>
         <script>
-            function hashPSW(){
-                if(document.getElementById("password").value !== ""){
-                    document.getElementById("password").value = MD5.generate(document.getElementById("password").value);
-                    document.getElementById("password2").value = MD5.generate(document.getElementById("password2").value);
-                }
+            //Funzione che controlla se email e password sono validi(cioè se rispettano il formato delle regex definite di seguito)
+            function _validaForm(){
+                var password=document.getElementById("passwordMain2").value;
+                document.getElementById("passwordMain2").value = MD5.generate(document.getElementById("passwordMain2").value);
             }
         </script>
     </body>

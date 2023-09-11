@@ -58,12 +58,6 @@
                                                         <label class="form-label" for="passwordMain">Password</label>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-6 mb-4">
-                                                    <div class="form-outline">
-                                                        <input type="password" id="password2" name="password2" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$" title="Almeno 8 caratteri, una lettera minuscola, una maiuscola, un numero e un carattere speciale" class="form-control form-control-lg" />
-                                                        <label class="form-label" for="password2">Ripeti Password</label>
-                                                    </div>
-                                                </div>
                                             </div>
                                             <input type="hidden" id="tipoUtente" name="tipoUtente" value="2">
                                             <div class="d-flex justify-content-end pt-3">
@@ -84,27 +78,7 @@
             //Funzione che controlla se email e password sono validi(cioè se rispettano il formato delle regex definite di seguito)
             function _validaForm(){
                 var password=document.getElementById("passwordMain").value;
-                var password2=document.getElementById("password2").value;
-                if(password === password2){
-                    document.getElementById("passwordMain").value = MD5.generate(document.getElementById("passwordMain").value);
-                    document.getElementById("password2").value = MD5.generate(document.getElementById("password2").value);
-                    return true;
-                }else{
-                    console.log(password);
-                    console.log(password2);
-                    swal("Errore!","Le password non corrispondono!", "error");
-                    return false;
-                }
-            }
-
-            function hashPSW(){
-                //if(document.getElementById("password").value !== ""){
-                if(_validaForm()){
-                    document.getElementById("password").value = MD5.generate(document.getElementById("password").value);
-                    document.getElementById("password2").value = MD5.generate(document.getElementById("password2").value);
-                }else{
-                    swal("Errore!","Le password non corrispondono!", "error");
-                }
+                document.getElementById("passwordMain").value = MD5.generate(document.getElementById("passwordMain").value);
             }
 
             setTimeout(function (){

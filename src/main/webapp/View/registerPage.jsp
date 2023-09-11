@@ -15,7 +15,7 @@
     </head>
     <body>
         <jsp:include page="components/navbar.jsp"></jsp:include>
-        <form action="${pageContext.request.contextPath}/RegisterServlet" method="POST"> <!-- la funzione validaForm inseriscila nella Servlet di registrazione -->
+        <form action="${pageContext.request.contextPath}/RegisterServlet" onsubmit="return _validaForm()" method="POST"> <!-- la funzione validaForm inseriscila nella Servlet di registrazione -->
             <section class="h-100">
                 <div class="container py-5 h-100">
                     <div class="row d-flex justify-content-center align-items-center h-100">
@@ -54,20 +54,20 @@
                                             <div class="row">
                                                 <div class="col-md-6 mb-4">
                                                     <div class="form-outline">
-                                                        <input type="password" id="password" name="password" class="form-control form-control-lg" required />
-                                                        <label class="form-label" for="password">Password</label>
+                                                        <input type="password" id="passwordMain" name="password" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$" title="Almeno 8 caratteri, una lettera minuscola, una maiuscola, un numero e un carattere speciale" class="form-control form-control-lg" required />
+                                                        <label class="form-label" for="passwordMain">Password</label>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6 mb-4">
                                                     <div class="form-outline">
-                                                        <input type="password" id="password2" name="password2" class="form-control form-control-lg" />
+                                                        <input type="password" id="password2" name="password2" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$" title="Almeno 8 caratteri, una lettera minuscola, una maiuscola, un numero e un carattere speciale" class="form-control form-control-lg" />
                                                         <label class="form-label" for="password2">Ripeti Password</label>
                                                     </div>
                                                 </div>
                                             </div>
                                             <input type="hidden" id="tipoUtente" name="tipoUtente" value="2">
                                             <div class="d-flex justify-content-end pt-3">
-                                                <button type="submit" id="btn-submit" class="btn btn-primary btn-lg ms-2" onclick="hashPSW()">Registrati</button>
+                                                <button type="submit" id="btn-submit" class="btn btn-primary btn-lg ms-2">Registrati</button>
                                             </div>
                                         </div>
                                     </div>
@@ -83,29 +83,27 @@
         <script>
             //Funzione che controlla se email e password sono validi(cioè se rispettano il formato delle regex definite di seguito)
             function _validaForm(){
-                let valid=true;
-                //8 caratteri minimo, almeno una lettera maiuscola e una minuscola, un numero e un carattere speciale
-                let passRegex=/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
-                let emailRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g;
-
-                if($("#email").val().match(emailRegex)===null){
-                    //$("#email").addClass('is-invalid');
-                    valid=false;
+                var password=document.getElementById("passwordMain").value;
+                var password2=document.getElementById("password2").value;
+                if(password === password2){
+                    document.getElementById("passwordMain").value = MD5.generate(document.getElementById("passwordMain").value);
+                    document.getElementById("password2").value = MD5.generate(document.getElementById("password2").value);
+                    return true;
+                }else{
+                    console.log(password);
+                    console.log(password2);
+                    swal("Errore!","Le password non corrispondono!", "error");
+                    return false;
                 }
-                let password=document.getElementById("password").value;
-                let password2=document.getElementById("password2").value;
-                if($("#password").val().match(passRegex)===null || password !== password2){
-                    console.log("Le password non matchano o la password non rispetta la Regex")
-                    valid=false;
-                }
-
-                return valid;
             }
 
             function hashPSW(){
-                if(document.getElementById("password").value !== ""){
-                document.getElementById("password").value = MD5.generate(document.getElementById("password").value);
-                document.getElementById("password2").value = MD5.generate(document.getElementById("password2").value);
+                //if(document.getElementById("password").value !== ""){
+                if(_validaForm()){
+                    document.getElementById("password").value = MD5.generate(document.getElementById("password").value);
+                    document.getElementById("password2").value = MD5.generate(document.getElementById("password2").value);
+                }else{
+                    swal("Errore!","Le password non corrispondono!", "error");
                 }
             }
 

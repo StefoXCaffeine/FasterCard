@@ -24,10 +24,13 @@ public class PasswordEncrypt {
 
     public String hashing(String password){
         try {
+            //Oggetto MessageDigest che implementa l'algoritmo passato come parametro
             MessageDigest digest = MessageDigest.getInstance("SHA-256");
+            //Codifica la stringa in una sequenza di byte secondo il charset passato come parametro
             byte[] hash = digest.digest(password.getBytes("UTF-8"));
             StringBuilder hexString = new StringBuilder();
 
+            //Ogni carattere dell'hash viene trasformato come un integer unsigned 16 e lo appende alla stringa
             for (byte b : hash) {
                 String hex = Integer.toHexString(0xff & b);
                 if (hex.length() == 1)

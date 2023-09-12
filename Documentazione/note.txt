@@ -1,0 +1,22 @@
+Admin:
+mariorossi123@gmail.com
+
+Negoziante:
+giuseppeverdi21@libero.it
+
+Utente base:
+stefano.parrini22@gmail.com
+
+password(uguale per tutti): pass123
+
+NOTE DATABASE:
+Il dump del database crea e riempie solamente le tabelle.
+E' necessario creare un database chiamato "schemacard" e utilizzare lo script del dump sql all'interno del database
+
+Eventuali credenziali database:
+database_name="schemacard"
+username="root"
+password="root"
+url="jdbc:mysql://localhost:3306/schemacard
+
+

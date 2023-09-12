@@ -12,7 +12,7 @@ import jakarta.servlet.annotation.*;
 public class CardStatusServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        getServletContext().getRequestDispatcher("/View/errorPage.jsp").forward(request, response);
     }
 
     @Override

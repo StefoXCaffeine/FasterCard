@@ -15,7 +15,7 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         //Se viene effettuata una richiesta GET alla servlet di login, si viene riportati all'index
-        request.getRequestDispatcher("index.jsp").forward(request, response);
+        getServletContext().getRequestDispatcher("/View/errorPage.jsp").forward(request, response);
     }
 
     @Override

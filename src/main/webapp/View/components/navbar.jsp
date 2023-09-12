@@ -70,7 +70,6 @@
     function hashPSW(){
         if(document.getElementById("password").value != ""){
             document.getElementById("password").value = MD5.generate(document.getElementById("password").value);
-            document.getElementById("password2").value = MD5.generate(document.getElementById("password2").value);
         }
     }
 </script>

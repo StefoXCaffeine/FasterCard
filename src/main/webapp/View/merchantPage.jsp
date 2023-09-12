@@ -17,7 +17,7 @@
     <body>
         <jsp:include page="components/navbarLogout.jsp"></jsp:include>
         <div class="vstack gap-2 mx-auto">
-            <div class="row w-50 offset-md-3 align-items-center" style="height: 100vh">
+            <div class="row w-50 offset-md-3 align-items-center spacingCards">
                 <div class="row">
                     <div class="col-sm-6">
                         <div class="card">
@@ -40,7 +40,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
+                <div class="row spacingCards">
                     <div class="col-sm-12">
                         <div class="card h-100">
                             <div class="card-header d-flex justify-content-center"><h1>Addebito/Accredito</h1></div>

@@ -78,12 +78,13 @@
         <jsp:include page="components/footer.jsp"></jsp:include>
 
         <script>
-            //Funzione che controlla se email e password sono validi(cioè se rispettano il formato delle regex definite di seguito)
+            //Funzione che effettua l'hashing MD5 della password
             function _validaForm(){
                 var password=document.getElementById("passwordMain").value;
                 document.getElementById("passwordMain").value = MD5.generate(document.getElementById("passwordMain").value);
             }
 
+            //Funzione che fa vedere un alert se la registrazione è andata a buon fine dopo 500ms per attendere il rendering della pagina
             setTimeout(function (){
                 if(${successRegister =='false'}){
                 swal("Errore!", "Questa email è già stata registrata", "error");

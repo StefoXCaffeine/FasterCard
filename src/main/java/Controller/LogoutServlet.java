@@ -23,6 +23,6 @@ public class LogoutServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("index.jsp").forward(request, response);
+        getServletContext().getRequestDispatcher("/View/errorPage.jsp").forward(request, response);
     }
 }

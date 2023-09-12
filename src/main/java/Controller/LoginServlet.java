@@ -48,9 +48,9 @@ public class LoginServlet extends HttpServlet {
                 }
             }
 
-            //Utente loggato correttamente, creazione della sessione con 5 minuti di inattività massima e oggetto utente
+            //Utente loggato correttamente, creazione della sessione con oggetto utente
             HttpSession session = request.getSession();
-            session.setMaxInactiveInterval(60*5);
+            //session.setMaxInactiveInterval(60*5);
             session.setAttribute("currentUser", user);
 
             //Switch che effettua il redirect dell'utente verso la pagina personale corretta secondo la tipologia di utente

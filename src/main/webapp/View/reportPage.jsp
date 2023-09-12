@@ -18,7 +18,7 @@
   </head>
   <body>
     <jsp:include page="components/navbarLogout.jsp"></jsp:include>
-    <div class="vstack gap-4 container align-items-center justify-content-center d-flex" style="height: 100vh">
+    <div class="vstack gap-4 container align-items-center justify-content-center d-flex spacingCards">
       <div class="d-grid" style="max-width: 400px;">
         <input type="button" value="Salva PDF" class="btn btn-primary btn-lg hidePrint" onClick="window.print()">
       </div>

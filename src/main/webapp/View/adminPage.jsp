@@ -112,7 +112,7 @@
         </div>
         <jsp:include page="/View/components/footer.jsp"></jsp:include>
         <script>
-            //Funzione che controlla se email e password sono validi(cioè se rispettano il formato delle regex definite di seguito)
+            //Funzione che effettua l'hashing MD5 della password
             function _validaForm(){
                 var password=document.getElementById("passwordMain2").value;
                 document.getElementById("passwordMain2").value = MD5.generate(document.getElementById("passwordMain2").value);

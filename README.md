@@ -8,3 +8,5 @@ The goal of the project was to develop a Webapp regarding the management of Cred
 <b>Merchant</b>: Same operations as a card owner but can also do transactions.
 
 <b>System Admin</b>: Same operations as a merchant but can also create cards, register merchants and eventually block them.
+
+The Webapp architecture is a MVC pattern alongside Java Servlets and JSPs
